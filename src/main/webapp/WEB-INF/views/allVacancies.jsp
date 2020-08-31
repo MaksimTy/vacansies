@@ -11,66 +11,83 @@
 
 <div class="container">
     <div class="row">
-        <div>
-            <form>
-                <div class="form-group">
-                    <input class="form-control form-control" type="text" placeholder="Company">
-                    <input class="form-control" type="text" placeholder="vacancy">
-                    <input class="form-control form-control" type="date" placeholder="from">
-                    <input class="form-control form-control" type="date" placeholder="to">
-                    <button type="submit" class="btn btn-primary">Filter</button>
-                </div>
-            </form>
-        </div>
-        <h1>All vacancies</h1>
-        <table class="table-sm table-hover">
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col">company</th>
-                <th scope="col">vacancy</th>
-                <th scope="col">request date</th>
-                <th scope="col">response date</th>
-                <th scope="col">response</th>
-            </tr>
-            <c:forEach var="vacancy" items="${vacancies}">
-                <c:url value="/edit/${vacancy.id}" var="url"/>
-                <tr onclick="location.href='${url}'">
-                    <td scope="row">${vacancy.id}</td>
-                    <td>${vacancy.company}</td>
-                    <td>${vacancy.vacancy}</td>
-                    <td>${vacancy.requestDate}</td>
-                    <td>${vacancy.responseDate}</td>
-                    <td>${vacancy.answer}</td>
-                </tr>
-            </c:forEach>
+        <div class="col-sm">
+            <div>
+                <form>
+                    <div class="form-group">
+                        <input class="form-control form-control mt-2" type="text" placeholder="Company" name="company"
+                               id="company">
+                        <input class="form-control mt-2" type="text" placeholder="Vacancy">
 
-            <tr>
-                <td colspan="6">
-                    <c:url value="/add" var="add"/>
-                    <p><a href="${add}">add vacancy</a></p>
-                    <c:forEach begin="${1}" end="${pagesCount}" step="1" varStatus="i">
-                        <c:url value="/" var="url">
-                            <c:param name="page" value="${i.index}"/>
-                        </c:url>
-                        <a href="${url}">${i.index}</a>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <label class="col-form-label mt-2">Request date</label>
+                            </div>
+                            <div class="col-sm-3">
+                                <input class="form-control form-control mt-2" type="date" placeholder="from">
+                                <input class="form-control form-control mt-2" type="date" placeholder="to">
+                            </div>
+                            <div class="col-sm-3">
+                                <label class="col-form-label mt-2">Response date</label>
+                            </div>
+                            <div class="col-sm-3">
+                                <input class="form-control form-control mt-2" type="date" placeholder="from">
+                                <input class="form-control form-control mt-2" type="date" placeholder="to">
+                            </div>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary">Filter</button>
+                    </div>
+                </form>
+            </div>
+            <div>
+                <h1>All vacancies</h1>
+            </div>
+            <div>
+                <c:url value="/add" var="add"/>
+                <a class="btn btn-primary" type="button" href="${add}">add vacancy</a>
+            </div>
+            <div>
+                <table class="table-sm table-hover d-flex p-2 bd-highlight">
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">company</th>
+                        <th scope="col">vacancy</th>
+                        <th scope="col">request date</th>
+                        <th scope="col">response date</th>
+                        <th scope="col">response</th>
+                    </tr>
+                    <c:forEach var="vacancy" items="${vacancies}">
+                        <c:url value="/edit/${vacancy.id}" var="url"/>
+                        <tr onclick="location.href='${url}'">
+                            <td scope="row">${vacancy.id}</td>
+                            <td>${vacancy.company}</td>
+                            <td>${vacancy.vacancy}</td>
+                            <td>${vacancy.requestDate}</td>
+                            <td>${vacancy.responseDate}</td>
+                            <td>${vacancy.answer}</td>
+                        </tr>
                     </c:forEach>
-                </td>
-            </tr>
-        </table>
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">10</a></li>
-                <li class="page-item"><a class="page-link" href="#">11</a></li>
-                <li class="page-item"><a class="page-link" href="#">12</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
-                </li>
-            </ul>
-        </nav>
 
+
+                </table>
+            </div>
+            <div>
+                <nav aria-label="navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                        <c:forEach begin="${1}" end="${pagesCount}" step="1" varStatus="i">
+                            <c:url value="/" var="url">
+                                <c:param name="page" value="${i.index}"/>
+                            </c:url>
+                            <li class="page-item"><a class="page-link" href="${url}">${i.index}</a></li>
+                        </c:forEach>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </div>
 </div>
 
