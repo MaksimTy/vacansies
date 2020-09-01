@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Date;
 import java.util.List;
 
 @Service
@@ -52,5 +53,25 @@ public class VacanciesServiceImpl implements VacanciesService {
     @Transactional
     public int vacanciesCount() {
         return vacanciesDAO.vacanciesCount();
+    }
+
+    @Override
+    @Transactional
+    public List<Vacancy> filter(
+            int page,
+            String company,
+            String vacancy,
+            Date requestFrom,
+            Date requestTo,
+            Date responseFrom,
+            Date responseTo) {
+        return vacanciesDAO.filter(
+                page,
+                company,
+                vacancy,
+                requestFrom,
+                requestTo,
+                responseFrom,
+                responseTo);
     }
 }

@@ -36,7 +36,7 @@
                         <label class="col-sm-2 col-form-label" for="company">Company</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" name="company" id="company"
-                                   value="${vacancy.company}">
+                                   value="${vacancy.company}" required>
                         </div>
                     </div>
 
@@ -44,7 +44,7 @@
                         <label class="col-sm-2 col-form-label" for="vacancy">Vacancy</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" name="vacancy" id="vacancy"
-                                   value="${vacancy.vacancy}">
+                                   value="${vacancy.vacancy}" required>
                         </div>
                     </div>
 
@@ -74,7 +74,7 @@
                         <label class="col-sm-2 col-form-label" for="requestDate">Request date</label>
                         <div class="col-sm-2">
                             <input class="form-control" type="date" name="requestDate" id="requestDate"
-                                   value="${vacancy.requestDate}">
+                                   value="${vacancy.requestDate}" required>
                         </div>
                     </div>
 

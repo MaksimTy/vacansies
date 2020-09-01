@@ -2,6 +2,7 @@ package com.tymkovskiy.vacancies.service;
 
 import com.tymkovskiy.vacancies.model.Vacancy;
 
+import java.sql.Date;
 import java.util.List;
 
 public interface VacanciesService {
@@ -16,4 +17,13 @@ public interface VacanciesService {
     Vacancy getById(int id);
 
     int vacanciesCount();
+
+    List<Vacancy> filter(
+            int page,
+            String company,
+            String vacancy,
+            Date requestFrom,
+            Date requestTo,
+            Date responseFrom,
+            Date responseTo);
 }

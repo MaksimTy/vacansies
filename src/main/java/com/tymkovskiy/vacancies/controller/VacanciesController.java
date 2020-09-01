@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -27,7 +28,7 @@ public class VacanciesController {
     public ModelAndView allVacancies(@RequestParam(defaultValue = "1") int page) {
         List<Vacancy> vacancies = vacanciesService.allVacancies(page);
         int vacanciesCount = vacanciesService.vacanciesCount();
-        int pagesCount = (vacanciesCount + vacanciesPerPage-1) / vacanciesPerPage;
+        int pagesCount = (vacanciesCount + vacanciesPerPage - 1) / vacanciesPerPage;
         ModelAndView modelAndView = new ModelAndView("allVacancies");
         modelAndView.addObject("vacancies", vacancies);
         modelAndView.addObject("page", page);
@@ -69,6 +70,40 @@ public class VacanciesController {
     public ModelAndView deleteVacancy(@PathVariable("id") int id) {
         ModelAndView modelAndView = new ModelAndView("redirect:/?page=" + this.page);
         vacanciesService.delete(vacanciesService.getById(id));
+        return modelAndView;
+    }
+
+    @PostMapping("/filter")
+    public ModelAndView filter(
+            @RequestParam(defaultValue = "1") int page,
+            @RequestParam(value = "company", defaultValue = "") String company,
+            @RequestParam(value = "vacancy", defaultValue = "") String vacancy,
+            @RequestParam(value = "request_from", required = false) String requestFrom,
+            @RequestParam(value = "request_to", required = false) String requestTo,
+            @RequestParam(value = "response_from", required = false) String responseFrom,
+            @RequestParam(value = "response_to", required = false) String responseTo
+    ) {
+        List<Vacancy> vacancies = vacanciesService.filter(
+                page,
+                company,
+                vacancy,
+                requestFrom.isEmpty() ? null : Date.valueOf(requestFrom),
+                requestTo.isEmpty() ? null : Date.valueOf(requestTo),
+                responseFrom.isEmpty() ? null : Date.valueOf(responseFrom),
+                responseTo.isEmpty() ? null : Date.valueOf(responseTo)
+        );
+
+        ModelAndView modelAndView = new ModelAndView("allVacancies");
+        modelAndView.addObject("company", company);
+        modelAndView.addObject("vacancy", vacancy);
+        modelAndView.addObject("request_from", requestFrom);
+        modelAndView.addObject("request_to", requestTo);
+        modelAndView.addObject("response_from", responseFrom);
+        modelAndView.addObject("response_to", responseTo);
+        modelAndView.addObject("vacancies", vacancies);
+        modelAndView.addObject("page", page);
+
+        this.page = page;
         return modelAndView;
     }
 }

@@ -1,7 +1,13 @@
 table {
+    width: 100%;
+    display: flex;
 
 }
 
 .card {
     width: 100%;
+}
+
+.filter-label {
+    text-align: center;
 }

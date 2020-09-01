@@ -13,30 +13,37 @@
     <div class="row">
         <div class="col-sm">
             <div>
-                <form>
+                <form action="/filter" method="post">
                     <div class="form-group">
                         <input class="form-control form-control mt-2" type="text" placeholder="Company" name="company"
-                               id="company">
-                        <input class="form-control mt-2" type="text" placeholder="Vacancy">
+                               id="company" value="${company}">
+                        <input class="form-control mt-2" type="text" placeholder="Vacancy" name="vacancy"
+                               id="vacancy" value="${vacancy}">
 
                         <div class="row">
                             <div class="col-sm-3">
-                                <label class="col-form-label mt-2">Request date</label>
+                                <label class="filter-label col-form-label mt-2">Request date</label>
                             </div>
                             <div class="col-sm-3">
-                                <input class="form-control form-control mt-2" type="date" placeholder="from">
-                                <input class="form-control form-control mt-2" type="date" placeholder="to">
+                                <input class="form-control form-control mt-2" type="date" placeholder="from"
+                                       name="request_from"
+                                       id="request_from" value="${request_from}">
+                                <input class="form-control form-control mt-2" type="date" placeholder="to"
+                                       name="request_to"
+                                       id="request_to" value="${request_to}">
                             </div>
                             <div class="col-sm-3">
-                                <label class="col-form-label mt-2">Response date</label>
+                                <label class="filter-label col-form-label mt-2">Response date</label>
                             </div>
                             <div class="col-sm-3">
-                                <input class="form-control form-control mt-2" type="date" placeholder="from">
-                                <input class="form-control form-control mt-2" type="date" placeholder="to">
+                                <input class="form-control form-control mt-2" type="date" placeholder="from"
+                                       name="response_from"
+                                       id="response_from" value="${response_from}">
+                                <input class="form-control form-control mt-2" type="date" placeholder="to"
+                                       name="response_to"
+                                       id="response_to" value="${response_to}">
                             </div>
                         </div>
-
-
                         <button type="submit" class="btn btn-primary">Filter</button>
                     </div>
                 </form>
@@ -48,8 +55,8 @@
                 <c:url value="/add" var="add"/>
                 <a class="btn btn-primary" type="button" href="${add}">add vacancy</a>
             </div>
-            <div>
-                <table class="table-sm table-hover d-flex p-2 bd-highlight">
+            <div class="justify-content-center">
+                <table class="table-sm table-hover p-2 bd-highlight">
                     <tr>
                         <th scope="col">id</th>
                         <th scope="col">company</th>
@@ -69,8 +76,6 @@
                             <td>${vacancy.answer}</td>
                         </tr>
                     </c:forEach>
-
-
                 </table>
             </div>
             <div>
@@ -78,9 +83,11 @@
                     <ul class="pagination justify-content-center">
                         <li class="page-item"><a class="page-link" href="#">Previous</a></li>
                         <c:forEach begin="${1}" end="${pagesCount}" step="1" varStatus="i">
-                            <c:url value="/" var="url">
-                                <c:param name="page" value="${i.index}"/>
-                            </c:url>
+
+                                <c:url value="/" var="url">
+                                    <c:param name="page" value="${i.index}"/>
+                                </c:url>
+
                             <li class="page-item"><a class="page-link" href="${url}">${i.index}</a></li>
                         </c:forEach>
                         <li class="page-item"><a class="page-link" href="#">Next</a></li>

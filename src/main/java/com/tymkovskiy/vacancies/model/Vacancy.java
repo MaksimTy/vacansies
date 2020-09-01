@@ -121,8 +121,12 @@ public class Vacancy {
     }
 
     public void setResponseDate(Date responseDate) {
+        if(responseDate == null)
+            this.requestDate = null;
         this.responseDate = responseDate;
     }
+
+
 
     @Override
     public String toString() {
