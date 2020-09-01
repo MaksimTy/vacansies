@@ -125,9 +125,6 @@ public class Vacancy {
             this.requestDate = null;
         this.responseDate = responseDate;
     }
-
-
-
     @Override
     public String toString() {
         return "Vacancy{" +
