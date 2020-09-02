@@ -68,7 +68,6 @@ public class VacanciesDAOImpl implements VacanciesDAO {
     @SuppressWarnings("unchecked")
     @Override
     public List<Vacancy> filter(
-            int page,
             String company,
             String vacancy,
             Date requestFrom,
@@ -90,10 +89,8 @@ public class VacanciesDAOImpl implements VacanciesDAO {
         if (responseTo != null)
             query.append(String.format(" AND answer_date <= '%s'", responseTo.toString()));
         query.append(" ORDER BY id");
-        return  session
+        return session
                 .createQuery(query.toString())
-                .setFirstResult(vacanciesPerPage * (page - 1))
-                .setMaxResults(vacanciesPerPage)
                 .list();
     }
 }

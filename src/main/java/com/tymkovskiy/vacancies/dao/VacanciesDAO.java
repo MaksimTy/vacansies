@@ -20,7 +20,6 @@ public interface VacanciesDAO {
     int vacanciesCount();
 
     List<Vacancy> filter(
-            int page,
             String company,
             String vacancy,
             Date requestFrom,

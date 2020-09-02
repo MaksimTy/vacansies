@@ -1,13 +1,16 @@
 table {
     width: 100%;
-    display: flex;
-
-}
-
-.card {
-    width: 100%;
 }
 
 .filter-label {
-    text-align: center;
+   text-align: center;
+}
+
+.card{
+    display: flex;
+}
+
+.btn{
+    width:150px !important;
+    margin: 2px;
 }

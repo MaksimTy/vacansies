@@ -14,99 +14,90 @@
         <c:set value="warning" var="color"/>
     </c:if>
     <title>${title}</title>
-    <link rel="stylesheet" href="<c:url value="/res/style.css"/>" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <c:url value="/res/style.css" var="style"/>
+    <link rel="stylesheet" href="${style}" type="text/css">
+
 </head>
 <body>
 
 <div class="container">
     <div class="row">
-        <div class="card">
-            <h5 class="card-header text-white bg-${color}">${title}</h5>
-            <div class="card-body">
-
-                <form action="${var}" method="post">
-
-                    <c:if test="${!empty vacancy.id}">
-                        <input type="hidden" name="id" value="${vacancy.id}">
-                    </c:if>
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="company">Company</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" name="company" id="company"
-                                   value="${vacancy.company}" required>
+        <div class="col-sm">
+            <div class="card">
+                <h5 class="card-header text-white bg-${color}">${title}</h5>
+                <div class="card-body">
+                    <form action="${var}" method="post">
+                        <c:if test="${!empty vacancy.id}">
+                            <input type="hidden" name="id" value="${vacancy.id}">
+                        </c:if>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" for="company">Company</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" name="company" id="company"
+                                       value="${vacancy.company}" required>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="vacancy">Vacancy</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" name="vacancy" id="vacancy"
-                                   value="${vacancy.vacancy}" required>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" for="vacancy">Vacancy</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" name="vacancy" id="vacancy"
+                                       value="${vacancy.vacancy}" required>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="mail">E-mail</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="email" name="mail" id="mail" value="${vacancy.mail}">
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" for="mail">E-mail</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="email" name="mail" id="mail" value="${vacancy.mail}">
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="vacancyLink">Link</label>
-                        <div class="col-sm-10">
-                            <input class="form-control" type="text" name="vacancyLink" id="vacancyLink"
-                                   value="${vacancy.vacancyLink}"/>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" for="vacancyLink">Link</label>
+                            <div class="col-sm-10">
+                                <input class="form-control" type="text" name="vacancyLink" id="vacancyLink"
+                                       value="${vacancy.vacancyLink}"/>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="text">Description</label>
-                        <div class="col-sm-10">
-                            <textarea class="form-control" rows="20" name="text" id="text">${vacancy.text}</textarea>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" for="text">Description</label>
+                            <div class="col-sm-10">
+                                <textarea class="form-control" rows="20" name="text"
+                                          id="text">${vacancy.text}</textarea>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="requestDate">Request date</label>
-                        <div class="col-sm-2">
-                            <input class="form-control" type="date" name="requestDate" id="requestDate"
-                                   value="${vacancy.requestDate}" required>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" for="requestDate">Request date</label>
+                            <div class="col-sm-3">
+                                <input class="form-control" type="date" name="requestDate" id="requestDate"
+                                       value="${vacancy.requestDate}" required>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="responseDate">Response date</label>
-                        <div class="col-sm-2">
-                            <input class="form-control" type="date" name="responseDate" id="responseDate"
-                                   value="${vacancy.responseDate}">
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" for="responseDate">Response date</label>
+                            <div class="col-sm-3">
+                                <input class="form-control" type="date" name="responseDate" id="responseDate"
+                                       value="${vacancy.responseDate}">
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label" for="answer">Response</label>
-                        <div class="col-sm-2">
-                            <input class="form-control" type="text" name="answer" id="answer" value="${vacancy.answer}">
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label" for="answer">Response</label>
+                            <div class="col-sm-3">
+                                <input class="form-control" type="text" name="answer" id="answer"
+                                       value="${vacancy.answer}">
+                            </div>
                         </div>
-                    </div>
-
-                    <p>
-                    <div>
-                        <input class="btn btn-${color}" type="submit" value=${title}>
-                    </div>
-                    <c:if test="${!empty vacancy.id}">
-                        <div>
-                            <a class="btn btn-danger" type="button" href="/delete/${vacancy.id}">Del</a>
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <input type="submit" class="btn btn-${color}" value=" ${title}">
+                            <a class="btn btn-primary" type="button" href="/">To the list</a>
+                            <c:if test="${!empty vacancy.id}">
+                                <a class="btn btn-danger" type="button" href="/delete/${vacancy.id}">Del</a>
+                            </c:if>
                         </div>
-                    </c:if>
-                    </p>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-
     </div>
 </div>
 

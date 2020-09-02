@@ -3,9 +3,10 @@
 <html>
 <head>
     <title>All vacancies</title>
-    <link rel="stylesheet" href="<c:url value="/res/style.css"/>" type="text/css">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="<c:url value="/res/style.css"/>" type="text/css">
 </head>
 <body>
 
@@ -42,6 +43,7 @@
                                 <input class="form-control form-control mt-2" type="date" placeholder="to"
                                        name="response_to"
                                        id="response_to" value="${response_to}">
+
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Filter</button>
@@ -53,18 +55,21 @@
             </div>
             <div>
                 <c:url value="/add" var="add"/>
-                <a class="btn btn-primary" type="button" href="${add}">add vacancy</a>
+                <a class="btn btn-primary" type="button" href="${add}">Add vacancy</a>
             </div>
             <div class="justify-content-center">
                 <table class="table-sm table-hover p-2 bd-highlight">
+                    <thead class="thead-dark bg-primary">
                     <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">company</th>
-                        <th scope="col">vacancy</th>
-                        <th scope="col">request date</th>
-                        <th scope="col">response date</th>
-                        <th scope="col">response</th>
+                        <th scope="col" width="10%">id</th>
+                        <th scope="col" width="30%">company</th>
+                        <th scope="col" width="30%">vacancy</th>
+                        <th scope="col" width="10%">request date</th>
+                        <th scope="col" width="10%">response date</th>
+                        <th scope="col" width="10%">response</th>
                     </tr>
+                    </thead>
+                    <tbody>
                     <c:forEach var="vacancy" items="${vacancies}">
                         <c:url value="/edit/${vacancy.id}" var="url"/>
                         <tr onclick="location.href='${url}'">
@@ -76,23 +81,22 @@
                             <td>${vacancy.answer}</td>
                         </tr>
                     </c:forEach>
+                    </tbody>
                 </table>
-            </div>
-            <div>
-                <nav aria-label="navigation">
+
+                <nav class="m-5" aria-label="navigation">
                     <ul class="pagination justify-content-center">
-                        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
                         <c:forEach begin="${1}" end="${pagesCount}" step="1" varStatus="i">
 
-                                <c:url value="/" var="url">
-                                    <c:param name="page" value="${i.index}"/>
-                                </c:url>
+                            <c:url value="/" var="url">
+                                <c:param name="page" value="${i.index}"/>
+                            </c:url>
 
                             <li class="page-item"><a class="page-link" href="${url}">${i.index}</a></li>
                         </c:forEach>
-                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
                     </ul>
                 </nav>
+
             </div>
         </div>
     </div>

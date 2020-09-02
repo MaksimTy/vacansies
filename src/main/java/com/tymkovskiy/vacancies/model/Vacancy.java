@@ -88,8 +88,9 @@ public class Vacancy {
         return requestDate;
     }
 
-    public void setRequestDate(Date requestDate) {
-        this.requestDate = requestDate;
+    public void setRequestDate(String requestDate) {
+        if (!requestDate.isEmpty())
+            this.requestDate = Date.valueOf(requestDate);
     }
 
     public String getText() {
@@ -120,11 +121,11 @@ public class Vacancy {
         return responseDate;
     }
 
-    public void setResponseDate(Date responseDate) {
-        if(responseDate == null)
-            this.requestDate = null;
-        this.responseDate = responseDate;
+    public void setResponseDate(String responseDate) {
+        if (!responseDate.isEmpty())
+            this.responseDate = Date.valueOf(responseDate);
     }
+
     @Override
     public String toString() {
         return "Vacancy{" +

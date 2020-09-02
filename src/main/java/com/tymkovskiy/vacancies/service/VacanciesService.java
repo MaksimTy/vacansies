@@ -19,7 +19,6 @@ public interface VacanciesService {
     int vacanciesCount();
 
     List<Vacancy> filter(
-            int page,
             String company,
             String vacancy,
             Date requestFrom,

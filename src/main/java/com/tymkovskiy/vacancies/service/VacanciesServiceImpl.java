@@ -58,7 +58,6 @@ public class VacanciesServiceImpl implements VacanciesService {
     @Override
     @Transactional
     public List<Vacancy> filter(
-            int page,
             String company,
             String vacancy,
             Date requestFrom,
@@ -66,7 +65,6 @@ public class VacanciesServiceImpl implements VacanciesService {
             Date responseFrom,
             Date responseTo) {
         return vacanciesDAO.filter(
-                page,
                 company,
                 vacancy,
                 requestFrom,

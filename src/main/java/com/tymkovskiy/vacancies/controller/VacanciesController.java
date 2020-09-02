@@ -75,7 +75,6 @@ public class VacanciesController {
 
     @PostMapping("/filter")
     public ModelAndView filter(
-            @RequestParam(defaultValue = "1") int page,
             @RequestParam(value = "company", defaultValue = "") String company,
             @RequestParam(value = "vacancy", defaultValue = "") String vacancy,
             @RequestParam(value = "request_from", required = false) String requestFrom,
@@ -84,7 +83,6 @@ public class VacanciesController {
             @RequestParam(value = "response_to", required = false) String responseTo
     ) {
         List<Vacancy> vacancies = vacanciesService.filter(
-                page,
                 company,
                 vacancy,
                 requestFrom.isEmpty() ? null : Date.valueOf(requestFrom),
@@ -101,9 +99,7 @@ public class VacanciesController {
         modelAndView.addObject("response_from", responseFrom);
         modelAndView.addObject("response_to", responseTo);
         modelAndView.addObject("vacancies", vacancies);
-        modelAndView.addObject("page", page);
 
-        this.page = page;
         return modelAndView;
     }
 }
