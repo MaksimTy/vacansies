@@ -7,7 +7,6 @@
         <c:url value="/add" var="var"/>
         <c:set value="success" var="color"/>
     </c:if>
-
     <c:if test="${!empty vacancy.id}">
         <c:set value="Edit vacancy" var="title"/>
         <c:url value="/edit" var="var"/>
@@ -18,10 +17,8 @@
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <c:url value="/res/style.css" var="style"/>
     <link rel="stylesheet" href="${style}" type="text/css">
-
 </head>
 <body>
-
 <div class="container">
     <div class="row">
         <div class="col-sm">
@@ -87,7 +84,7 @@
                                        value="${vacancy.answer}">
                             </div>
                         </div>
-                        <div class="btn-group" role="group" aria-label="Basic example">
+                        <div class="btn-group" role="group" aria-label="basic">
                             <input type="submit" class="btn btn-${color}" value=" ${title}">
                             <a class="btn btn-primary" type="button" href="/">To the list</a>
                             <c:if test="${!empty vacancy.id}">
@@ -100,6 +97,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>

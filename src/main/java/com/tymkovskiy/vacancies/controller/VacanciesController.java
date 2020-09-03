@@ -73,7 +73,7 @@ public class VacanciesController {
         return modelAndView;
     }
 
-    @PostMapping("/filter")
+    @GetMapping("/filter")
     public ModelAndView filter(
             @RequestParam(value = "company", defaultValue = "") String company,
             @RequestParam(value = "vacancy", defaultValue = "") String vacancy,
