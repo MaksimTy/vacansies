@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-sm">
             <div>
-                <form action="/filter" method="get">
+                <form action="<c:url value="/filter"/>" method="get">
                     <div class="form-group">
                         <input class="form-control form-control mt-2" type="text" placeholder="Company" name="company"
                                id="company" value="${company}">
@@ -44,7 +44,7 @@
                         </div>
                         <div class="btn-group" role="group" aria-label="basic">
                             <button type="submit" class="btn btn-primary">Filter</button>
-                            <a class="btn btn-primary" type="button" href="/">Reset filter</a>
+                            <a class="btn btn-primary" type="button" href="<c:url value="/"/>">Reset filter</a>
                         </div>
                     </div>
                 </form>

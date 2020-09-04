@@ -86,9 +86,9 @@
                         </div>
                         <div class="btn-group" role="group" aria-label="basic">
                             <input type="submit" class="btn btn-${color}" value=" ${title}">
-                            <a class="btn btn-primary" type="button" href="/">To the list</a>
+                            <a class="btn btn-primary" type="button" href="<c:url value="/"/>">To the list</a>
                             <c:if test="${!empty vacancy.id}">
-                                <a class="btn btn-danger" type="button" href="/delete/${vacancy.id}">Del</a>
+                                <a class="btn btn-danger" type="button" href="<c:url value="/delete/${vacancy.id}"/>">Del</a>
                             </c:if>
                         </div>
                     </form>
